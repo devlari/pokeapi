@@ -1,27 +1,31 @@
-import { MainLayout } from "@/components/Layout/MainLayout";
+import Header from "@/components/Header";
 import ListPokemon from "@/components/ListPokemon";
-import { Pokemon } from "@/modules/pokemon";
+import PokemonService from "@/modules/pokemon/service";
+import { Pokemon } from "@/modules/pokemon/types";
+import { GetServerSideProps } from 'next';
 
-export default function Home() {
+type Props = {
+    pokemonList: Pokemon[]
+}
 
-    const pokemon: Pokemon[] = [
-        {
-            id: 1,
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
-        },
-        {
-            id: 2,
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
-        }
-    ] 
+export default function Home({ pokemonList }: Props) {
 
     return (
-        <MainLayout>
-            <ListPokemon pokemon={pokemon} />
-        </MainLayout>
+        <div>
+            <Header />
+            <ListPokemon pokemon={pokemonList} />
+        </div>
     )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const service = new PokemonService();
+
+    const pokemonList: Pokemon[] | null = await service.get();
+
+    return {
+        props: {
+            pokemonList
+        }
+    }
 }

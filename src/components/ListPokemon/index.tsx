@@ -1,4 +1,4 @@
-import { Pokemon } from "@/modules/pokemon";
+import { Pokemon } from "@/modules/pokemon/types";
 import PokemonView from "./Pokemon";
 import { DivListPokemon } from "./list-pokemon.styles";
 
