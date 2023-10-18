@@ -5,14 +5,10 @@ type TypesPokemonProps = {
 }
 
 export function TypesPokemon({types}: TypesPokemonProps) {
-
-
-
     return (
         <div>
             {types.map(type => {
-                const src = '/icons/types/'+type;
-                console.log(src)
+                const src = '/icons/types/'+type+".png";
                 return (
                     <Image key={type} width={50} height={50} src={src} alt={type} />
                 )

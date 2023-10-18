@@ -1,0 +1,11 @@
+body {
+    height: 100vh;
+    overflow-y: hidden;
+    margin-bottom: 90px;
+
+    background-image: url("/images/pattern-pokeball.jpg");
+    background-repeat: "repeat";
+    background-size: "cover";
+    min-height: 100vh;
+    min-width: 100vw;
+}
