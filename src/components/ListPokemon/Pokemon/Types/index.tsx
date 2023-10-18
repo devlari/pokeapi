@@ -8,9 +8,9 @@ export function TypesPokemon({types}: TypesPokemonProps) {
     return (
         <div>
             {types.map(type => {
-                const src = '/icons/types/'+type+".png";
+                const src = `/icons/types/${type}.svg`;
                 return (
-                    <Image key={type} width={50} height={50} src={src} alt={type} />
+                    <Image key={type} width={75} height={75} src={src} alt={type} />
                 )
             })}
         </div>
