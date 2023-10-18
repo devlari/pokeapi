@@ -1,3 +1,4 @@
+import { MainLayout } from "@/Layout/MainLayout";
 import Header from "@/components/Header";
 import ListPokemon from "@/components/ListPokemon";
 import PokemonService from "@/modules/pokemon/service";
@@ -11,10 +12,9 @@ type Props = {
 export default function Home({ pokemonList }: Props) {
 
     return (
-        <div>
-            <Header />
+        <MainLayout>
             <ListPokemon pokemon={pokemonList} />
-        </div>
+        </MainLayout>
     )
 }
 

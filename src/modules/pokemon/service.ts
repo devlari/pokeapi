@@ -11,18 +11,16 @@ export default class PokemonService {
   async get(): Promise<Pokemon[] | null> {
     try {
       const result: APIPokemonList = await this.ApiClient.get<APIPokemonList>('/pokemon?limit=5');
-      console.log(result)
-
       const pokemon: Pokemon[] = [];
 
       for (const poke of result.results) {
         const pokemonDetails = await this.getDetails(poke.name);
+
         if (pokemonDetails) {
           pokemon.push(pokemonDetails);
         }
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 50000));
       return pokemon;
     } catch (err) {
       console.log(err);

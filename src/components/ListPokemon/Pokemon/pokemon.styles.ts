@@ -24,7 +24,6 @@ const colors = {
 export const CardPokemon = styled.div<{type: string }>`
     width: 200px;
     height: 200px;
-    margin: 50px 20px;
     border-radius: 10px;
     background-color: ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
     
@@ -60,22 +59,22 @@ export const InfoPokemon = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`;
 
-export const IdPokemon = styled.span`
-    background-color: white;
-    border-radius: 15px;
-    padding: 5px 10px;
+    span {
+        background-color: white;
+        border-radius: 15px;
+        padding: 5px 10px;
 
-    font-size: 13px;
-    font-weight: 700;
-`;
+        font-size: 13px;
+        font-weight: 700;
+    }
 
-export const NamePokemon = styled.h3`
-    margin-top: 10px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff;
-    text-transform: capitalize;
+    h3 {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: capitalize;
+    }
 `;
