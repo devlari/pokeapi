@@ -21,11 +21,19 @@ const colors = {
     water: '#48CAE4'
 }
 
+export const ViewPokemon = styled.div`
+    padding: 25px;
+    height: 320px;
+`;
+
 export const CardPokemon = styled.div<{type: string }>`
+    border: 1px solid ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
     width: 200px;
-    height: 200px;
+    height: 230px;
     border-radius: 10px;
     background-color: ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
+    position: relative;
+    margin: 75px 0;
     
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -33,7 +41,6 @@ export const CardPokemon = styled.div<{type: string }>`
         transform: scale(1.1);
     }
 
-    position: relative;
 `;
 
 export const ImagePokemon = styled.div`

@@ -8,5 +8,10 @@ export const DivListPokemon = styled.div`
     margin: 0 auto;
     max-width: 1200px;
     padding: 0 20px;
-    margin-top: 90px;
+    margin-bottom: 50px;
+
+    @media (min-width: 1600px) {
+        max-width: 1400px;
+    }
+
 `;

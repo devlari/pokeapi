@@ -1,5 +1,5 @@
 import { Pokemon } from "@/modules/pokemon/types";
-import { ImagePokemon, CardPokemon, InfoPokemon } from "./pokemon.styles";
+import { ImagePokemon, CardPokemon, InfoPokemon, ViewPokemon } from "./pokemon.styles";
 import Image from "next/image";
 import { TypesPokemon } from "./Types";
 
@@ -12,10 +12,7 @@ export default function PokemonView({pokemon}: PokemonProps) {
     const id = pokemon.id.toString().padStart(3, '0');
 
     return (
-        <div style={{
-            margin: '10px',
-            display: 'flex',
-        }}>
+        <ViewPokemon>
             <CardPokemon type={pokemon.types[0]}>
                 <ImagePokemon>
                     <Image src={pokemon.image} alt="" width={100} height={100} />
@@ -30,6 +27,6 @@ export default function PokemonView({pokemon}: PokemonProps) {
                 </InfoPokemon>
                 <TypesPokemon types={pokemon.types}/>
             </CardPokemon>
-        </div>
+        </ViewPokemon>
     )
 }
