@@ -4,7 +4,14 @@ const colors = {
     bug: '#A2CE6F',
     dark: '#002E4E',
     dragon: '#53a4cf',
-    electric: '#FFF47B',
+    // v1-> ficou muito claro
+    //electric: '#FFF47B',
+    // v2 -> ficou muito claro
+    // electric: '#FFEF45',
+    // v3 -> ficou destoante mas dá pra ler
+    // electric: '#FFD700',
+    // v4 -> menos pior? 
+    electric: '#FFF050',
     fairy: '#FFB3C6',
     fighting: '#F79D65',
     fire: '#DD393C',

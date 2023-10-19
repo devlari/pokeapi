@@ -18,6 +18,13 @@ export type APIPokemon = {
     }[];
 }
 
+export type PokemonList = {
+    count: number,
+    next: string,
+    previous: string,
+    results: Pokemon[],
+}
+
 export type Pokemon = {
     id: number,
     name: string,

@@ -1,5 +1,5 @@
 import ApiClient from "@/service/httpClient";
-import { APIPokemon, APIPokemonList, Pokemon } from "./types";
+import { APIPokemon, APIPokemonList, Pokemon, PokemonList } from "./types";
 
 export default class PokemonService {
   private ApiClient: ApiClient;
@@ -8,20 +8,30 @@ export default class PokemonService {
     this.ApiClient = new ApiClient();
   }
 
-  async get(): Promise<Pokemon[] | null> {
+  async get(numberPage: number): Promise<PokemonList | null> {
+
+    const limit = 20;
+    const offset = (numberPage - 1) * limit;
+
     try {
-      const result: APIPokemonList = await this.ApiClient.get<APIPokemonList>('/pokemon?limit=5');
-      const pokemon: Pokemon[] = [];
+      const result: APIPokemonList = await this.ApiClient.get<APIPokemonList>(`/pokemon?limit=${limit}&offset=${offset}`);
+      
+      const data: PokemonList = {
+        count: result.count,
+        next: result.next,
+        previous: result.previous,
+        results: [],
+      }
 
       for (const poke of result.results) {
         const pokemonDetails = await this.getDetails(poke.name);
 
         if (pokemonDetails) {
-          pokemon.push(pokemonDetails);
+          data.results.push(pokemonDetails);
         }
       }
 
-      return pokemon;
+      return data;
     } catch (err) {
       console.log(err);
       return null;
