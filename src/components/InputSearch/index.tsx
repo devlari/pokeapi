@@ -16,7 +16,7 @@ export default function InputSearch({ value, onChange, onClick }: InputSearchPro
 
     return (
         <InputSearchContainer>
-            <InputSearchInput type="text" value={value} onChange={(e) => onChange(e.target.value)} onKeyPress={onEnter} />
+            <InputSearchInput placeholder="Pesquise por nome ou ID" type="text" value={value} onChange={(e) => onChange(e.target.value)} onKeyPress={onEnter} />
             <InputSearchButton onClick={onClick}>Pesquisar</InputSearchButton>
         </InputSearchContainer>
     )

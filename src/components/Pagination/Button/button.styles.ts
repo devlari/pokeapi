@@ -2,9 +2,15 @@ import styled from "styled-components";
 
 export const StyledPaginationButtonContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    width: 50%;
+    margin: 10px auto;
+
+    @media screen and (max-width: 800px) {
+        width: 90%;
+    }
 `;
 
 export const StyledPaginationButton = styled.button<{currentPage?: boolean }>`
