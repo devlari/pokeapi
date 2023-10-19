@@ -7,18 +7,28 @@ export const StyledPaginationButtonContainer = styled.div`
     margin-top: 20px;
 `;
 
-export const StyledPaginationButton = styled.button`
+export const StyledPaginationButton = styled.button<{currentPage?: boolean }>`
     padding: 10px;
     margin: 5px;
     border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.2);
+    
+    background-color: #ddd;
+    color: black;
     border: 1px solid transparent;
     font-size: 16px;
 
     ${(props) => !props.disabled && `
+        background-color: white;
+
         &:hover {
             cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: #EF382E;
+            color: white;
         }
+    `}
+
+    ${(props) => props.currentPage && `
+        background-color: #EF382E;
+        color: white;
     `}
 `;

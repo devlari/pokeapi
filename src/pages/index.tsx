@@ -1,8 +1,9 @@
 import { MainLayout } from "@/Layout/MainLayout";
+import InputSearch from "@/components/InputSearch";
 import ListPokemon from "@/components/ListPokemon";
 import Pagination from "@/components/Pagination";
 import PokemonService from "@/modules/pokemon/service";
-import { Pokemon, PokemonList } from "@/modules/pokemon/types";
+import { Pokemon, PokemonDetails, PokemonList } from "@/modules/pokemon/types";
 import { GetServerSideProps } from 'next';
 import { useState } from "react";
 
@@ -12,7 +13,9 @@ type Props = {
 
 export default function Home({ data }: Props) {
     const [dataPage, setDataPage] = useState<PokemonList>(data);
-    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [currentPage, setCurrentPage] = useState<number>(0);
+    const [pokemonName, setPokemonName] = useState<string>('');
+    const [pokemonSelected, setPokemonSelected] = useState<PokemonDetails | null>(null);
     const service = new PokemonService();
     
     async function handlePageChange (numberPage: number) {
@@ -23,7 +26,7 @@ export default function Home({ data }: Props) {
         }
 
         setDataPage(data);
-        setCurrentPage(numberPage);
+        setCurrentPage(numberPage - 1);
     };
 
     async function handlePrev() {
@@ -38,11 +41,30 @@ export default function Home({ data }: Props) {
         }
     }
 
+    async function searchByName() {
+        console.log(pokemonName);
+        const data = await service.getDetails(pokemonName.toLowerCase(), true);
+
+        if (!data || !('stats' in data)) {
+            return;
+        }
+
+        setPokemonSelected(data);
+        setDataPage({
+            count: 1,
+            next: '',
+            previous: '',
+            results: [data]
+        });
+    }
+
     return (
         <MainLayout>
+            <InputSearch value={pokemonName} onChange={setPokemonName} onClick={searchByName} />
             <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} />            
             <ListPokemon pokemon={dataPage.results} />
-            <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} />            
+            <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} />  
+
         </MainLayout>
     )
 }

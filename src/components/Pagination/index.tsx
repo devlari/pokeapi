@@ -21,8 +21,8 @@ export default function Pagination({data, onPageChange, currentPage, onPrev, onN
     return (
         <StyledPaginationButtonContainer>
             <ButtonPagination text="Anterior" disabled={!previous} onClick={() => onPrev()} />
-            {pages.map(page => (
-                <ButtonPagination key={page} text={String(page)} onClick={() => onPageChange(page)} />
+            {pages.map((page, i) => (
+                <ButtonPagination key={page} text={String(page)} disabled={currentPage == i} currentPage={currentPage == i} onClick={() => onPageChange(page)} />
             ))}
             <ButtonPagination text="Próximo" disabled={!next} onClick={() => onNext()} />
         </StyledPaginationButtonContainer>

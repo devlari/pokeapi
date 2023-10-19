@@ -16,6 +16,15 @@ export type APIPokemon = {
             name: string;
         };
     }[];
+    stats: {
+        base_stat: number;
+        effort: number;
+        stat: {
+            name: string;
+        };
+    }[];
+    height: number;
+    weight: number;
 }
 
 export type PokemonList = {
@@ -32,6 +41,14 @@ export type Pokemon = {
     image: string,
 } 
 
-export type PokemonDetails = {
-    //to-do
+export type PokemonDetails = Pokemon & {
+    stats: {
+        base_stat: number;
+        effort: number;
+        stat: {
+            name: string;
+        }
+    }[];
+    height: number;
+    weight: number;
 }
