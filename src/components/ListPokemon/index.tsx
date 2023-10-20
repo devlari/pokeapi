@@ -1,16 +1,17 @@
 import { Pokemon } from "@/modules/pokemon/types";
-import PokemonView from "./Pokemon";
+import SmallCardPokemon from "./CardPokemon/Small/index";
 import { DivListPokemon } from "./list-pokemon.styles";
 
 type ListPokemonProps = {
     pokemon: Pokemon[];
+    onClickPokemon: (pokemon: Pokemon) => void;
 }
 
-export default function ListPokemon({pokemon}: ListPokemonProps) {
+export default function ListPokemon({pokemon, onClickPokemon}: ListPokemonProps) {
     return (
         <DivListPokemon>
             {pokemon.map((poke) => (
-                <PokemonView pokemon={poke} key={poke.id} />
+                <SmallCardPokemon onClickPokemon={onClickPokemon} pokemon={poke} key={poke.id} />
             ))}
         </DivListPokemon>
     )

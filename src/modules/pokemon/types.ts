@@ -39,9 +39,6 @@ export type Pokemon = {
     name: string,
     types: string[],
     image: string,
-} 
-
-export type PokemonDetails = Pokemon & {
     stats: {
         base_stat: number;
         effort: number;

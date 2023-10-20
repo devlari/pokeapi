@@ -1,18 +1,19 @@
 import { Pokemon } from "@/modules/pokemon/types";
-import { ImagePokemon, CardPokemon, InfoPokemon, ViewPokemon } from "./pokemon.styles";
+import { ImagePokemon, CardPokemon, InfoPokemon, ViewPokemon } from "./small-card-pokemon.styles";
 import Image from "next/image";
 import { TypesPokemon } from "./Types";
 
 type PokemonProps = {
     pokemon: Pokemon;
+    onClickPokemon: (pokemon: Pokemon) => void;
 }
 
-export default function PokemonView({pokemon}: PokemonProps) {
+export default function SmallCardPokemon({pokemon, onClickPokemon}: PokemonProps) {
 
     const id = pokemon.id.toString().padStart(3, '0');
 
     return (
-        <ViewPokemon>
+        <ViewPokemon onClick={() => onClickPokemon(pokemon)}>
             <CardPokemon type={pokemon.types[0]}>
                 <ImagePokemon>
                     <Image src={pokemon.image} alt="" width={100} height={100} />
