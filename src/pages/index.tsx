@@ -29,6 +29,14 @@ export default function Home({ data }: Props) {
         setCurrentPage(numberPage - 1);
     };
 
+    async function handlePokemonName(value: string) {
+        if (value === '') {
+            setPokemonSelected(null);
+        }
+
+        setPokemonName(value.toLowerCase())
+    }
+
     async function handlePrev() {
         if (currentPage > 1) {
             handlePageChange(currentPage - 1);
@@ -42,27 +50,21 @@ export default function Home({ data }: Props) {
     }
 
     async function searchByName() {
-        console.log(pokemonName);
         const data = await service.getDetails(pokemonName.toLowerCase(), true);
 
         if (!data || !('stats' in data)) {
+            setPokemonSelected(null);
             return;
         }
 
         setPokemonSelected(data);
-        setDataPage({
-            count: 1,
-            next: '',
-            previous: '',
-            results: [data]
-        });
     }
 
     return (
         <MainLayout>
-            <InputSearch value={pokemonName} onChange={setPokemonName} onClick={searchByName} />
+            <InputSearch value={pokemonName} onChange={handlePokemonName} onClick={searchByName} />
             <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} />            
-            <ListPokemon pokemon={dataPage.results} />
+            <ListPokemon pokemon={pokemonSelected ? [pokemonSelected] : dataPage.results} />
             <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} />  
 
         </MainLayout>

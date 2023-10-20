@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { InputSearchButton, InputSearchContainer, InputSearchInput } from "./input-search.styles";
 
 type InputSearchProps = {
@@ -16,7 +17,7 @@ export default function InputSearch({ value, onChange, onClick }: InputSearchPro
 
     return (
         <InputSearchContainer>
-            <InputSearchInput placeholder="Pesquise por nome ou ID" type="text" value={value} onChange={(e) => onChange(e.target.value)} onKeyPress={onEnter} />
+            <InputSearchInput placeholder="Pesquise por nome ou ID" type="text" value={value} onChange={(e) => onChange(e.target.value)} onKeyDown={onEnter} />
             <InputSearchButton onClick={onClick}>Pesquisar</InputSearchButton>
         </InputSearchContainer>
     )
