@@ -18,7 +18,8 @@ export const HeaderTitle = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: Mochiy Pop One;
+  font-family: Playpen Sans;
+  font-weight: bold;
   font-size: 36px;
   margin-left: 10px;
 `;

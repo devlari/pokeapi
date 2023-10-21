@@ -16,7 +16,7 @@ export default function SmallCardPokemon({pokemon, onClickPokemon}: PokemonProps
         <ViewPokemon onClick={() => onClickPokemon(pokemon)}>
             <CardPokemon type={pokemon.types[0]}>
                 <ImagePokemon>
-                    <Image src={pokemon.image} alt="" width={100} height={100} />
+                    <Image src={pokemon.image.pixel} alt="" width={100} height={100} />
                 </ImagePokemon>
                 <InfoPokemon>
                     <span>

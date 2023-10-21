@@ -1,5 +1,5 @@
 import { Pokemon } from "@/modules/pokemon/types";
-import SmallCardPokemon from "./CardPokemon/Small/index";
+import SmallCardPokemon from "../CardPokemon/Small";
 import { DivListPokemon } from "./list-pokemon.styles";
 
 type ListPokemonProps = {

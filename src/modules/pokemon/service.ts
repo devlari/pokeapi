@@ -1,5 +1,5 @@
 import ApiClient from "@/service/httpClient";
-import { APIPokemon, APIPokemonList, Pokemon, PokemonDetails, PokemonList } from "./types";
+import { APIPokemon, APIPokemonList, Pokemon, PokemonList } from "./types";
 
 export default class PokemonService {
   private ApiClient: ApiClient;
@@ -38,38 +38,27 @@ export default class PokemonService {
     }
   }
 
-  async getDetails(key: number | string, allData?: boolean): Promise<Pokemon | PokemonDetails | null> {
+  async getDetails(key: number | string): Promise<Pokemon | null> {
     try {
       const result = await this.ApiClient.get<APIPokemon>(`/pokemon/${key}`)
 
-      if(allData) {
-        const pokemonDetails: PokemonDetails = {
+        const pokemonDetails: Pokemon = {
           id: result.id,
           name: result.name,
-          image: result.sprites.front_default,
+          image: {
+            pixel: result.sprites.front_default,
+            vector: result.sprites.other.dream_world.front_default,
+          },
           types: result.types.map((type) => type.type.name),
           height: result.height,
           weight: result.weight,
           stats: result.stats.map((stat) => ({
+            name: stat.stat.name,
             base_stat: stat.base_stat,
-            effort: stat.effort,
-            stat: {
-              name: stat.stat.name,
-            },
           })),
         }
 
         return pokemonDetails;
-      }
-
-      const pokemon: Pokemon = {
-        id: result.id,
-        name: result.name,
-        image: result.sprites.front_default,
-        types: result.types.map((type) => type.type.name)
-      }
- 
-      return pokemon;
     } catch (err) {
       console.log(err);
       return null;

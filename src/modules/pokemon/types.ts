@@ -10,6 +10,11 @@ export type APIPokemon = {
     name: string;
     sprites: {
         front_default: string;
+        other: {
+            dream_world: {
+                front_default: string;
+            };
+        }
     }
     types: {
         type: {
@@ -38,13 +43,13 @@ export type Pokemon = {
     id: number,
     name: string,
     types: string[],
-    image: string,
+    image: {
+        pixel: string;
+        vector: string;
+    },
     stats: {
+        name: string;
         base_stat: number;
-        effort: number;
-        stat: {
-            name: string;
-        }
     }[];
     height: number;
     weight: number;

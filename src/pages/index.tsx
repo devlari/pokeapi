@@ -1,7 +1,7 @@
 import { MainLayout } from "@/Layout/MainLayout";
 import InputSearch from "@/components/InputSearch";
-import ListPokemon from "@/components/ListPokemon";
-import LargeCardPokemon from "@/components/ListPokemon/CardPokemon/Large";
+import ListPokemon from "@/modules/pokemon/components/ListPokemon";
+import LargeCardPokemon from "@/modules/pokemon/components/CardPokemon/Large";
 import Pagination from "@/components/Pagination";
 import PokemonService from "@/modules/pokemon/service";
 import { Pokemon, PokemonList } from "@/modules/pokemon/types";
@@ -50,8 +50,12 @@ export default function Home({ data }: Props) {
         }
     }
 
+    async function handleBack() {
+        setPokemonSelected(null);
+    }
+
     async function searchByName() {
-        const data = await service.getDetails(pokemonName.toLowerCase(), true);
+        const data = await service.getDetails(pokemonName.toLowerCase());
 
         if (!data) {
             setPokemonSelected(null);
@@ -64,14 +68,16 @@ export default function Home({ data }: Props) {
     return (
         <MainLayout>
             <InputSearch value={pokemonName} onChange={handlePokemonName} onClick={searchByName} />
-            <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} /> 
             {!pokemonSelected && (
-                <ListPokemon pokemon={dataPage.results} onClickPokemon={setPokemonSelected} />
+                <>
+                    <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} /> 
+                        <ListPokemon pokemon={dataPage.results} onClickPokemon={setPokemonSelected} />
+                    <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} />  
+                </>
             )}
             {pokemonSelected && (
-                <LargeCardPokemon pokemon={pokemonSelected} />
+                <LargeCardPokemon pokemon={pokemonSelected} onBack={handleBack} />
             )}           
-            <Pagination data={dataPage} currentPage={currentPage} onPageChange={handlePageChange} onPrev={handlePrev} onNext={handleNext} />  
         </MainLayout>
     )
 }

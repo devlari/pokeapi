@@ -34,9 +34,41 @@ export const CardPokemon = styled.div<{type: string }>`
     height: 600px;
     border-radius: 10px;
     background-color: ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
-    position: relative;
-    margin: 75px 0;
-    margin: 0 auto;
-    transition: all 0.3s ease-in-out;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
 
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+
+`;
+
+export const CardHeader = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 10px;
+    align-items: center;
+`;
+
+export const CardContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ListTypes = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const BackButton = styled.button`
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 `;
