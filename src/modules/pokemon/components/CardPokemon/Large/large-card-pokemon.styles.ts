@@ -31,7 +31,6 @@ const colors = {
 export const CardPokemon = styled.div<{type: string }>`
     border: 1px solid ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
     width: 50%;
-    height: 600px;
     border-radius: 10px;
     background-color: ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
     margin: 10px auto;
