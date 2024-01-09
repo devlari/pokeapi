@@ -10,8 +10,6 @@ export default function StatusBar({value}: StatusBarProps) {
     const bars = 15;
     const coloredBars = Math.floor(value / maxValue * bars);
 
-    console.log(coloredBars);
-
     return (
         <StatusBarContainer>
             {Array.from({length: bars}, (_, index) => {
