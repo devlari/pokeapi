@@ -15,7 +15,7 @@ type Props = {
 
 export default function Home({ data }: Props) {
     const [dataPage, setDataPage] = useState<PokemonList>(data);
-    const [currentPage, setCurrentPage] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const [pokemonName, setPokemonName] = useState<string>('');
     const [pokemonSelected, setPokemonSelected] = useState<Pokemon | null>(null);
     const service = new PokemonService();

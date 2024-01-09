@@ -13,13 +13,13 @@ export const StyledPaginationButtonContainer = styled.div`
     }
 `;
 
-export const StyledPaginationButton = styled.button<{currentPage?: boolean }>`
+export const StyledPaginationButton = styled.button<{currentpage: string }>`
     padding: 10px;
     margin: 5px;
     border-radius: 6px;
     
-    background-color: #ddd;
-    color: black;
+    background-color: ${(props) => props.currentpage == "true" ? '#EF382E' : '#ddd'};
+    color: ${(props) => props.currentpage == "true" ? 'white' : 'black'};
     border: 1px solid transparent;
     font-size: 16px;
 
@@ -31,10 +31,5 @@ export const StyledPaginationButton = styled.button<{currentPage?: boolean }>`
             background-color: #EF382E;
             color: white;
         }
-    `}
-
-    ${(props) => props.currentPage && `
-        background-color: #EF382E;
-        color: white;
     `}
 `;

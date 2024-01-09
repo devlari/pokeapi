@@ -9,6 +9,6 @@ type NumberProps = {
 
 export default function ButtonPagination({text, currentPage, disabled, onClick}: NumberProps) {
     return (
-        <StyledPaginationButton disabled={disabled} currentPage={currentPage} onClick={onClick}>{text}</StyledPaginationButton>
+        <StyledPaginationButton disabled={disabled} currentpage={currentPage ? currentPage.toString() : "false"} onClick={onClick}>{text}</StyledPaginationButton>
     )
 }
