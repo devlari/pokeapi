@@ -31,7 +31,7 @@ export default function LargeCardPokemon({pokemon, onBack}: PokemonProps) {
                             )
                         })}
                     </ListTypes>
-                    <Image src={pokemon.image.vector} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} />
+                    <Image src={!!pokemon.image.vector ? pokemon.image.vector : pokemon.image.pixel} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} />
                     <Stats stats={pokemon.stats}/>
             </CardContent>
         </CardPokemon>

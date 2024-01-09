@@ -23,13 +23,11 @@ export default class PokemonService {
         results: [],
       }
 
-      for (const poke of result.results) {
-        const pokemonDetails = await this.getDetails(poke.name);
+      const promises = result.results.map((poke) => this.getDetails(poke.name));
 
-        if (pokemonDetails) {
-          data.results.push(pokemonDetails);
-        }
-      }
+      const pokemons = await Promise.all(promises);
+
+      data.results.push(...pokemons.filter((poke) => poke !== null) as Pokemon[]); 
 
       return data;
     } catch (err) {
