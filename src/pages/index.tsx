@@ -7,6 +7,7 @@ import PokemonService from "@/modules/pokemon/service";
 import { Pokemon, PokemonList } from "@/modules/pokemon/types";
 import { GetServerSideProps } from 'next';
 import { useEffect, useState } from "react";
+import Alerts from "@/utils/sw-alert";
 
 type Props = {
     data: PokemonList;
@@ -16,7 +17,6 @@ export default function Home({ data }: Props) {
     const [dataPage, setDataPage] = useState<PokemonList>(data);
     const [currentPage, setCurrentPage] = useState<number>(0);
     const [pokemonName, setPokemonName] = useState<string>('');
-    const [notFound, setNotFound] = useState<boolean>(false);
     const [pokemonSelected, setPokemonSelected] = useState<Pokemon | null>(null);
     const service = new PokemonService();
 
@@ -57,14 +57,15 @@ export default function Home({ data }: Props) {
     }
 
     async function searchByName() {
-        const data = await service.getDetails(pokemonName.toLowerCase());
-
-        if (!data) {
-            setPokemonSelected(null);
-            return;
+        try{
+            const data = await service.getDetails(pokemonName.toLowerCase());
+            setPokemonSelected(data);
+        }catch(error: any) {
+            if(error.response.status === 404) {
+                return await Alerts.warning("Pokémon não encontrado!");
+            }
+            await Alerts.httpError(error, "Erro ao buscar pokémon!");
         }
-
-        setPokemonSelected(data);
     }
 
     return (
@@ -79,7 +80,7 @@ export default function Home({ data }: Props) {
             )}
             {pokemonSelected && (
                 <LargeCardPokemon pokemon={pokemonSelected} onBack={handleBack} />
-            )}        
+            )}    
         </MainLayout>
     )
 }

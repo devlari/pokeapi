@@ -27,8 +27,8 @@ export default function Pagination({data, onPageChange, currentPage, onPrev, onN
     }
 
     // console.log('totalPages', totalPages);
-    console.log('slicedPages', slicedPages);
-    console.log('currentPage', currentPage);
+    // console.log('slicedPages', slicedPages);
+    // console.log('currentPage', currentPage);
 
     return (
         <StyledPaginationButtonContainer>

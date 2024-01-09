@@ -58,8 +58,7 @@ export default class PokemonService {
 
         return pokemonDetails;
     } catch (err) {
-      console.log(err);
-      return null;
+      throw err;
     }
   }
 }
