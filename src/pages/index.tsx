@@ -16,16 +16,20 @@ export default function Home({ data }: Props) {
     const [dataPage, setDataPage] = useState<PokemonList>(data);
     const [currentPage, setCurrentPage] = useState<number>(0);
     const [pokemonName, setPokemonName] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
     const [pokemonSelected, setPokemonSelected] = useState<Pokemon | null>(null);
     const service = new PokemonService();
     
     async function handlePageChange (numberPage: number) {
         const data: PokemonList | null = await service.get(numberPage);
+        setLoading(true);
 
         if (!data) {
+            setLoading(false);
             return;
         }
 
+        setLoading(false);
         setDataPage(data);
         setCurrentPage(numberPage - 1);
     };

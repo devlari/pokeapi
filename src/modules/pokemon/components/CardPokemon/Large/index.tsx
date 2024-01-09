@@ -23,7 +23,6 @@ export default function LargeCardPokemon({pokemon, onBack}: PokemonProps) {
                 <div style={{width: '50px'}}></div>
             </CardHeader>
             <CardContent>
-                    <Image src={pokemon.image.vector} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} />
                     <ListTypes>
                         {pokemon.types.map(type => {
                             const src = `/icons/types/detailed/${type}.svg`;
@@ -32,6 +31,7 @@ export default function LargeCardPokemon({pokemon, onBack}: PokemonProps) {
                             )
                         })}
                     </ListTypes>
+                    <Image src={pokemon.image.vector} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} />
                     <Stats stats={pokemon.stats}/>
             </CardContent>
         </CardPokemon>

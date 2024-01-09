@@ -7,7 +7,7 @@ export const StatsContainer = styled.div`
     padding: 10px;
     margin-bottom: 10px;
     background-color: #f5f5f5;
-    border: 2px solid grey;
+    /* border: 2px solid grey; */
     border-radius: 8px;
 `;
 
