@@ -6,7 +6,7 @@ import Pagination from "@/components/Pagination";
 import PokemonService from "@/modules/pokemon/service";
 import { Pokemon, PokemonList } from "@/modules/pokemon/types";
 import { GetServerSideProps } from 'next';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
     data: PokemonList;
@@ -16,22 +16,20 @@ export default function Home({ data }: Props) {
     const [dataPage, setDataPage] = useState<PokemonList>(data);
     const [currentPage, setCurrentPage] = useState<number>(0);
     const [pokemonName, setPokemonName] = useState<string>('');
-    const [loading, setLoading] = useState<boolean>(false);
+    const [notFound, setNotFound] = useState<boolean>(false);
     const [pokemonSelected, setPokemonSelected] = useState<Pokemon | null>(null);
     const service = new PokemonService();
-    
+
     async function handlePageChange (numberPage: number) {
+        // WIP
         const data: PokemonList | null = await service.get(numberPage);
-        setLoading(true);
 
         if (!data) {
-            setLoading(false);
             return;
         }
 
-        setLoading(false);
         setDataPage(data);
-        setCurrentPage(numberPage - 1);
+        setCurrentPage(numberPage);
     };
 
     async function handlePokemonName(value: string) {
@@ -81,7 +79,7 @@ export default function Home({ data }: Props) {
             )}
             {pokemonSelected && (
                 <LargeCardPokemon pokemon={pokemonSelected} onBack={handleBack} />
-            )}           
+            )}        
         </MainLayout>
     )
 }
