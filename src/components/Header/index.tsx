@@ -11,11 +11,11 @@ export default function Header() {
                 <Image src={Pokeball} width={50} height={50} alt="Pokebola"/>
                 <Title>Pokédex</Title>
             </HeaderTitle>
-            <HeaderLinks>
+            {/* <HeaderLinks>
                 <HeaderButton title="Favorites" />
                 <HeaderButton title="Settings" />
                 <HeaderButton title="Fight"/>
-            </HeaderLinks>
+            </HeaderLinks> */}
         </StyledHeader>
     )
 }

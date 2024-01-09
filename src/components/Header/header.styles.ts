@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  background-color: #fff3;
+  background-color: #640000;
   height: 70px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   font-size: calc(10px + 2vmin);
-  color: #110303;
+  color: white;
 `;
 
 export const HeaderTitle = styled.div`
@@ -18,7 +18,6 @@ export const HeaderTitle = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: Playpen Sans;
   font-weight: bold;
   font-size: 36px;
   margin-left: 10px;
