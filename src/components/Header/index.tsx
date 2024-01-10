@@ -1,7 +1,6 @@
 import { StyledHeader, Title, HeaderTitle, HeaderLinks } from "./header.styles"
 import Image from "next/image"
 import Pokemon from '@public/images/pokemon.png'
-import { GearSix, Star } from "@phosphor-icons/react"
 import HeaderButton from "./Button"
 
 export default function Header() {

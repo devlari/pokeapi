@@ -10,23 +10,23 @@ export default function HeaderButton({ title }: HeaderButtonProps) {
     const IconFight = '/icons/boxing-glove.png'
 
     let href = '/'
-    switch (title) {
-        case 'Favorites':
-            href = '/favoritos'
-            break;
+    // switch (title) {
+    //     case 'Favorites':
+    //         href = '/favoritos'
+    //         break;
 
-        case 'Settings':
-            href = '/configuracoes'
-            break;
+    //     case 'Settings':
+    //         href = '/configuracoes'
+    //         break;
 
-        case 'Fight':
-            href = '/pokerinha'
-            break;
+    //     case 'Fight':
+    //         href = '/pokerinha'
+    //         break;
 
-        case 'Github':
-            href = 'https://github.com/devlari/pokeapi'
-            break;
-    }
+    //     case 'Github':
+    //         href = 'https://github.com/devlari/pokeapi'
+    //         break;
+    // }
     
     return (
         <Link href={href} target={title == 'Github' ? '_blank' : '_parent'}>
