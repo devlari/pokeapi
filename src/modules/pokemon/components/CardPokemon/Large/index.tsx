@@ -12,6 +12,9 @@ type PokemonProps = {
 export default function LargeCardPokemon({pokemon, onBack}: PokemonProps) {
 
     const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    const image = pokemon.image.vector || pokemon.image.pixel || '/images/notfound.png';
+
+    console.log(image)
 
     return (
         <CardPokemon type={pokemon.types[0]}>
@@ -31,7 +34,7 @@ export default function LargeCardPokemon({pokemon, onBack}: PokemonProps) {
                             )
                         })}
                     </ListTypes>
-                    <Image src={!!pokemon.image.vector ? pokemon.image.vector : pokemon.image.pixel} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} />
+                    <Image src={image} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} />
                     <Stats stats={pokemon.stats}/>
             </CardContent>
         </CardPokemon>
