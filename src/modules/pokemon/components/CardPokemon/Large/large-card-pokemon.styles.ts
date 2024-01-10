@@ -4,13 +4,6 @@ const colors = {
     bug: '#A2CE6F',
     dark: '#002E4E',
     dragon: '#53a4cf',
-    // v1-> ficou muito claro
-    //electric: '#FFF47B',
-    // v2 -> ficou muito claro
-    // electric: '#FFEF45',
-    // v3 -> ficou destoante mas dá pra ler
-    // electric: '#FFD700',
-    // v4 -> menos pior? 
     electric: '#FFF050',
     fairy: '#FFB3C6',
     fighting: '#F79D65',
@@ -31,7 +24,7 @@ const colors = {
 export const CardPokemon = styled.div<{type: string }>`
     border: 1px solid ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
     width: 40%;
-    min-width: 450px;
+    /* min-width: 450px; */
     border-radius: 10px;
     background-color: ${(props) => colors[props.type as keyof typeof colors] || '#fff'};
     margin: 10px auto;
