@@ -17,12 +17,6 @@ export const HeaderTitle = styled.div`
   align-items: center;
 `;
 
-export const Title = styled.p`
-  font-weight: bold;
-  font-size: 36px;
-  margin-left: 10px;
-`;
-
 export const HeaderLinks = styled.div`
   display: flex;
   flex-direction: row;

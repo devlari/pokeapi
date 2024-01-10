@@ -27,5 +27,10 @@
   },
   "devDependencies": {
     "file-loader": "^6.2.0"
+  },
+  "modularizeImports": {
+    "@phosphor-icons/react": {
+      "transform": "@phosphor-icons/react/dist/icons/{{member}}"
+    }
   }
 }

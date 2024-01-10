@@ -1,4 +1,4 @@
-import { StyledHeader, Title, HeaderTitle, HeaderLinks } from "./header.styles"
+import { StyledHeader, HeaderTitle, HeaderLinks } from "./header.styles"
 import Image from "next/image"
 import Pokemon from '@public/images/pokemon.png'
 import HeaderButton from "./Button"
