@@ -45,10 +45,10 @@ export default function Stats({stats}: Props) {
                     const name = StatsPort.find(item => item.name === stat.name)?.translate;
                     
                     return (
-                        <>
+                        <div key={stat.name}>
                             <h5 style={{margin: '5px'}} key={name}>{name}: {stat.base_stat}</h5>
                             <StatusBar value={stat.base_stat} key={stat.name} />
-                        </>
+                        </div>
                     )
                 })}
             </StatsName>
