@@ -14,8 +14,6 @@ export default function LargeCardPokemon({pokemon, onBack}: PokemonProps) {
     const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     const image = pokemon.image.vector || pokemon.image.pixel || '/images/notfound.png';
 
-    console.log(image)
-
     return (
         <CardPokemon type={pokemon.types[0]}>
             <CardHeader>
@@ -30,11 +28,11 @@ export default function LargeCardPokemon({pokemon, onBack}: PokemonProps) {
                         {pokemon.types.map(type => {
                             const src = `/icons/types/detailed/${type}.svg`;
                             return (
-                                <Image key={type} width={150} height={50} src={src} alt={type} />
+                                <Image key={type} width={150} height={50} src={src} alt={type} unoptimized />
                             )
                         })}
                     </ListTypes>
-                    <Image src={image} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} />
+                    <Image src={image} height={300} width={300} alt={pokemon.name} style={{padding: '10px'}} unoptimized />
                     <Stats stats={pokemon.stats}/>
             </CardContent>
         </CardPokemon>

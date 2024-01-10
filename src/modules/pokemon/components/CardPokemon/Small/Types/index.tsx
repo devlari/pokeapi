@@ -11,7 +11,7 @@ export function TypesPokemon({types}: TypesPokemonProps) {
             {types.map(type => {
                 const src = `/icons/types/${type}.svg`;
                 return (
-                    <Image key={type} width={75} height={75} src={src} alt={type} />
+                    <Image key={type} width={75} height={75} src={src} alt={type} unoptimized />
                 )
             })}
         </DivListTypes>

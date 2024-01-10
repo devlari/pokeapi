@@ -7,7 +7,7 @@ export default function Header() {
     return (
         <StyledHeader>
             <HeaderTitle>
-                <Image src={Pokemon} width={150} height={80} alt="Pokemon"/>
+                <Image src={Pokemon} width={150} height={80} alt="Pokemon" unoptimized />
             </HeaderTitle>
             <HeaderLinks>
                 <HeaderButton title="Github" />

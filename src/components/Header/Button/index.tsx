@@ -35,7 +35,7 @@ export default function HeaderButton({ title }: HeaderButtonProps) {
             {title === 'Github' && <GithubLogo size={45} color="#FFC900" /> }
             {title === 'Favorites' && <Star size={45} color="#FFC900" /> }
             {title === 'Settings' && <GearSix size={45} color="#FFC900" /> }
-            {title === 'Fight' && <Image src={IconFight} alt="Boxing Gloves" width={45} height={45} />}
+            {title === 'Fight' && <Image src={IconFight} alt="Boxing Gloves" width={45} height={45} unoptimized />}
         </Link>
     )
 }
