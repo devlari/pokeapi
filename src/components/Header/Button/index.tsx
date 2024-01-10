@@ -1,4 +1,6 @@
-import { GearSix, Star, GithubLogo } from "@phosphor-icons/react"
+import GearSix from "@phosphor-icons/react/GearSix";
+import Star from "@phosphor-icons/react/Star";
+import GithubLogo from "@phosphor-icons/react/GithubLogo";
 import Image from "next/image";
 import { Link } from './header-button.styles';
 
